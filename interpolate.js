@@ -1,6 +1,6 @@
 /*
  * Copyright Joyent, Inc. and other Node contributors.
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -8,10 +8,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to permit
  * persons to whom the Software is furnished to do so, subject to the
  * following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
  * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
@@ -21,30 +21,28 @@
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-(function () {
-  window.interpolate = function (f) {
-    if (typeof f !== 'string') throw new Error('first parameter must be a string')
+module.exports = function (f) {
+  if (typeof f !== 'string') throw new Error('first parameter must be a string')
 
-    var i = 1,
-        args = arguments,
-        len = args.length,
-        str
+  var i = 1,
+      args = arguments,
+      len = args.length,
+      str
 
-    str = f.replace(/%[sdj%]/g, function (x) {
-      if (x === '%%') return '%'
-      if (i >= len) return x
-      switch (x) {
-        case '%s': return String(args[i++])
-        case '%d': return Number(args[i++])
-        case '%j': return JSON.stringify(args[i++])
-        default: return x
-      }
-    })
+  str = f.replace(/%[sdj%]/g, function (x) {
+    if (x === '%%') return '%'
+    if (i >= len) return x
+    switch (x) {
+      case '%s': return String(args[i++])
+      case '%d': return Number(args[i++])
+      case '%j': return JSON.stringify(args[i++])
+      default: return x
+    }
+  })
 
-    for (var x = args[i]; i < len; x = args[++i]) {
-       str += ' ' + x
-     }
+  for (var x = args[i]; i < len; x = args[++i]) {
+     str += ' ' + x
+   }
 
-     return str 
-  }
-})()
+   return str
+}

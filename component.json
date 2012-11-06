@@ -1,5 +1,9 @@
 {
   "name": "interpolate",
+  "repo": "ramitos/interpolate",
+  "description": "simplified util.format from node.js to use in the browser"
   "version": "0.0.1",
-  "main": "interpolate.js"
+  "main": "interpolate.js",
+  "scripts": ["interpolate.js"],
+  "license": "MIT"
 }
