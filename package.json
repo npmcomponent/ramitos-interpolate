@@ -1,0 +1,8 @@
+{
+  "name": "ramitos-interpolate",
+  "description": "simplified util.format from node.js to use in the browser",
+  "version": "0.0.1",
+  "main": "interpolate.js",
+  "dependencies": {},
+  "license": "MIT"
+}
